@@ -55,6 +55,13 @@ class MapTabbedViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func addLocation(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "InfoPostingViewController") as! InfoPostingViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func hardCodedLocationData() -> [[String : Any]] {
         return  [
             [

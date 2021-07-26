@@ -13,6 +13,7 @@
 		671BEF3126A4E288004AE3B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671BEF2F26A4E288004AE3B1 /* Main.storyboard */; };
 		671BEF3326A4E28A004AE3B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671BEF3226A4E28A004AE3B1 /* Assets.xcassets */; };
 		671BEF3626A4E28A004AE3B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671BEF3426A4E28A004AE3B1 /* LaunchScreen.storyboard */; };
+		671BEF3E26AE691C004AE3B1 /* TableTabbedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF3D26AE691C004AE3B1 /* TableTabbedViewCell.swift */; };
 		F906778226AE288F00BD8E3E /* MapTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */; };
 		F906778426AE28C300BD8E3E /* TableTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */; };
 		F906778626AE2C5500BD8E3E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906778526AE2C5500BD8E3E /* Colors.xcassets */; };
@@ -29,6 +30,7 @@
 		671BEF3226A4E28A004AE3B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		671BEF3526A4E28A004AE3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		671BEF3726A4E28A004AE3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		671BEF3D26AE691C004AE3B1 /* TableTabbedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewCell.swift; sourceTree = "<group>"; };
 		F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778526AE2C5500BD8E3E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				671BEF2D26A4E288004AE3B1 /* LoginViewController.swift */,
 				F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */,
 				F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */,
+				671BEF3D26AE691C004AE3B1 /* TableTabbedViewCell.swift */,
 				F906778726AE386E00BD8E3E /* InfoPostingViewController.swift */,
 				F906778926AE38C500BD8E3E /* AddLocationViewController.swift */,
 			);
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671BEF2E26A4E288004AE3B1 /* LoginViewController.swift in Sources */,
+				671BEF3E26AE691C004AE3B1 /* TableTabbedViewCell.swift in Sources */,
 				F906778426AE28C300BD8E3E /* TableTabbedViewController.swift in Sources */,
 				671BEF2A26A4E288004AE3B1 /* AppDelegate.swift in Sources */,
 				F906778A26AE38C500BD8E3E /* AddLocationViewController.swift in Sources */,

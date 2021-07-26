@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class InfoPostingViewController: UIViewController {
   
     
