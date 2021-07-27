@@ -17,6 +17,7 @@ class MapTabbedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
         let locations = hardCodedLocationData()
         var annotations = [MKPointAnnotation]()
         
@@ -139,7 +140,9 @@ extension MapTabbedViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let toOpen = view.annotation?.subtitle! {
-                UIApplication.shared.open(URL(string: toOpen)!)
+                let alertVC = UIAlertController(title: "Login Failed", message: "whatever", preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                show(alertVC, sender: nil)
             }
         }
     }
