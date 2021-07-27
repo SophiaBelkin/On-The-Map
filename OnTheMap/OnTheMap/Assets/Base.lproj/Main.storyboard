@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="GsN-i6-VuP">
                                 <rect key="frame" x="20" y="323" width="374" height="235.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r76-ZN-ZcX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r76-ZN-ZcX">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="mw0-ak-8tY"/>

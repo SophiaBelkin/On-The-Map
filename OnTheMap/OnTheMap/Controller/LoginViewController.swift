@@ -15,15 +15,18 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func login(_ sender: Any) {
-        
-        performSegue(withIdentifier: "showDashboard", sender: nil)
+        UdacityClient.login(username: "sophialu.belkin@gmail.com", password: "Luxin79lx!") { success, error in
+            if success {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "showDashboard", sender: nil)
+                }
+             
+            } else {
+                print(error ?? "")
+            }
+        }
+       
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDashboard" {
-//
-//        }
-        
-    }
 }
 
