@@ -31,6 +31,13 @@ class TableTabbedViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    @IBAction func logout(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func hardCodedLocationData() -> [[String : Any]] {
         return  [
             [

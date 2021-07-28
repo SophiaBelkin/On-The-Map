@@ -139,16 +139,19 @@
                     <navigationItem key="navigationItem" title="On The Map" id="V9e-7H-hp9">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="TVg-e6-bqf">
                             <color key="tintColor" name="GradientBottom"/>
+                            <connections>
+                                <action selector="logout:" destination="F6B-BM-GrL" id="wUu-5j-HnZ"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="KKN-Z7-62I">
                                 <connections>
-                                    <action selector="addLocation:" destination="F6B-BM-GrL" id="URz-Bt-Yio"/>
+                                    <action selector="addLocation:" destination="F6B-BM-GrL" id="L7X-MY-7uW"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="icon_refresh" id="4jO-WR-I6K">
                                 <connections>
-                                    <action selector="reset:" destination="F6B-BM-GrL" id="OvD-qy-0kc"/>
+                                    <action selector="refreshData:" destination="F6B-BM-GrL" id="WSq-4Z-Y4H"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -315,6 +318,9 @@
                     <navigationItem key="navigationItem" title="On The Map" id="TYT-Ij-z84">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="hrW-1P-xLS">
                             <color key="tintColor" name="GradientBottom"/>
+                            <connections>
+                                <action selector="logout:" destination="ibv-0i-LEm" id="p6w-KH-8dQ"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="45l-ex-jPn">

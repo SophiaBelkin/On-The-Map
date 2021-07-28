@@ -50,12 +50,19 @@ class MapTabbedViewController: UIViewController {
         self.mapView.addAnnotations(annotations)
     }
     
-    @IBAction func reset(_ sender: Any) {
-        if let url = URL(string: "https://www.hackingwithswift.com") {
-            UIApplication.shared.open(url)
+
+    @IBAction func refreshData(_ sender: Any) {
+        
+    }
+        
+    @IBAction func logout(_ sender: Any) {
+        UdacityClient.logout() { _,_  in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+       
         }
     }
-    
     
     @IBAction func addLocation(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "InfoPostingViewController") as! InfoPostingViewController

@@ -17,14 +17,19 @@ class UdacityClient {
         static let base = "https://onthemap-api.udacity.com/v1"
         
         case getSessionID
-        case userLocation
+        case getUserLocations
+        case postUserLocation
+        case userInfoById(String)
         case webAuth
         
         var stringValue: String {
             switch self {
-            case .userLocation:
+            case .getUserLocations:
+                return Endpoints.base + "/StudentLocation?skip=8386&limit=100&order=-updatedAt"
+            case .postUserLocation:
                 return Endpoints.base + "/StudentLocation"
-       
+            case .userInfoById(let userId):
+                return Endpoints.base + "/users/\(userId)"
             case .getSessionID:
                 return Endpoints.base +  "/session"
             case .webAuth:
@@ -54,6 +59,41 @@ class UdacityClient {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         // encoding a JSON body from a string, can also use a Codable struct
         request.httpBody = "{\"udacity\": {\"username\": \"\(login.username)\", \"password\": \"\(login.password)\"}}".data(using: .utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            print(String(data: data, encoding: .utf8)!)
+            let decoder = JSONDecoder()
+            let range = (5..<data.count)
+            let newData = data.subdata(in: range)
+            print(String(data: newData, encoding: .utf8)!)
+            do {
+                _ = try decoder.decode(LoginResponse.self, from: newData)
+                
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
+        }
+        task.resume()
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.getSessionID.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             

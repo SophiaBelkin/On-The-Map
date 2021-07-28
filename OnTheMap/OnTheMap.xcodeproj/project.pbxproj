@@ -17,7 +17,8 @@
 		671BEF4026AFBDBC004AE3B1 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF3F26AFBDBC004AE3B1 /* UdacityClient.swift */; };
 		671BEF4226AFC336004AE3B1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4126AFC336004AE3B1 /* LoginRequest.swift */; };
 		671BEF4426AFC3E9004AE3B1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4326AFC3E9004AE3B1 /* LoginResponse.swift */; };
-		671BEF4626AFCE07004AE3B1 /* StudentInformationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4526AFCE07004AE3B1 /* StudentInformationResponse.swift */; };
+		671BEF4626AFCE07004AE3B1 /* GetStudentInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4526AFCE07004AE3B1 /* GetStudentInfoResponse.swift */; };
+		671BEF4826B1219D004AE3B1 /* PostStudentInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4726B1219D004AE3B1 /* PostStudentInfoResponse.swift */; };
 		F906778226AE288F00BD8E3E /* MapTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */; };
 		F906778426AE28C300BD8E3E /* TableTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */; };
 		F906778626AE2C5500BD8E3E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906778526AE2C5500BD8E3E /* Colors.xcassets */; };
@@ -38,7 +39,8 @@
 		671BEF3F26AFBDBC004AE3B1 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UdacityClient.swift; path = OnTheMap/Controller/UdacityClient.swift; sourceTree = SOURCE_ROOT; };
 		671BEF4126AFC336004AE3B1 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = OnTheMap/Controller/LoginRequest.swift; sourceTree = SOURCE_ROOT; };
 		671BEF4326AFC3E9004AE3B1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginResponse.swift; path = OnTheMap/Controller/LoginResponse.swift; sourceTree = SOURCE_ROOT; };
-		671BEF4526AFCE07004AE3B1 /* StudentInformationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentInformationResponse.swift; path = OnTheMap/Controller/StudentInformationResponse.swift; sourceTree = SOURCE_ROOT; };
+		671BEF4526AFCE07004AE3B1 /* GetStudentInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetStudentInfoResponse.swift; path = OnTheMap/Controller/GetStudentInfoResponse.swift; sourceTree = SOURCE_ROOT; };
+		671BEF4726B1219D004AE3B1 /* PostStudentInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostStudentInfoResponse.swift; path = OnTheMap/Controller/PostStudentInfoResponse.swift; sourceTree = SOURCE_ROOT; };
 		F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778526AE2C5500BD8E3E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -156,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				671BEF4326AFC3E9004AE3B1 /* LoginResponse.swift */,
-				671BEF4526AFCE07004AE3B1 /* StudentInformationResponse.swift */,
+				671BEF4526AFCE07004AE3B1 /* GetStudentInfoResponse.swift */,
+				671BEF4726B1219D004AE3B1 /* PostStudentInfoResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -239,10 +242,11 @@
 				671BEF2A26A4E288004AE3B1 /* AppDelegate.swift in Sources */,
 				F906778A26AE38C500BD8E3E /* AddLocationViewController.swift in Sources */,
 				F906778826AE386E00BD8E3E /* InfoPostingViewController.swift in Sources */,
+				671BEF4826B1219D004AE3B1 /* PostStudentInfoResponse.swift in Sources */,
 				671BEF2C26A4E288004AE3B1 /* SceneDelegate.swift in Sources */,
 				F906778226AE288F00BD8E3E /* MapTabbedViewController.swift in Sources */,
 				671BEF4426AFC3E9004AE3B1 /* LoginResponse.swift in Sources */,
-				671BEF4626AFCE07004AE3B1 /* StudentInformationResponse.swift in Sources */,
+				671BEF4626AFCE07004AE3B1 /* GetStudentInfoResponse.swift in Sources */,
 				671BEF4026AFBDBC004AE3B1 /* UdacityClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
