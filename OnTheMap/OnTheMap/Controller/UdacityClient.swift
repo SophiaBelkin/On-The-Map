@@ -19,17 +19,17 @@ class UdacityClient {
         case getSessionID
         case getUserLocations
         case postUserLocation
-        case userInfoById(String)
+        case userLocationById(String)
         case webAuth
         
         var stringValue: String {
             switch self {
             case .getUserLocations:
-                return Endpoints.base + "/StudentLocation?skip=8386&limit=100&order=-updatedAt"
+                return Endpoints.base + "/StudentLocation?limit=100"
             case .postUserLocation:
                 return Endpoints.base + "/StudentLocation"
-            case .userInfoById(let userId):
-                return Endpoints.base + "/users/\(userId)"
+            case .userLocationById(let userId):
+                return Endpoints.base + "/StudentLocation?uniqueKey=\(userId)"
             case .getSessionID:
                 return Endpoints.base +  "/session"
             case .webAuth:
@@ -49,6 +49,7 @@ class UdacityClient {
     class func taskForPOSTRequest() {
         
     }
+
     
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let login = LoginRequest(username: username, password: password)
@@ -117,4 +118,29 @@ class UdacityClient {
         task.resume()
     }
     
+    
+    class func getStudentsInfo(completion: @escaping ([StudentInfo], Error?) -> Void) {
+        let request = URLRequest(url: Endpoints.getUserLocations.url)
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            guard let data = data else {
+                completion([], error)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let studentData = try decoder.decode(GetStudentInfoResponse.self, from: data)
+                completion(studentData.results, nil)
+            } catch {
+                completion([], error)
+            }
+        }
+        
+        task.resume()
+        
+    }
 }

@@ -19,6 +19,8 @@
 		671BEF4426AFC3E9004AE3B1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4326AFC3E9004AE3B1 /* LoginResponse.swift */; };
 		671BEF4626AFCE07004AE3B1 /* GetStudentInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4526AFCE07004AE3B1 /* GetStudentInfoResponse.swift */; };
 		671BEF4826B1219D004AE3B1 /* PostStudentInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4726B1219D004AE3B1 /* PostStudentInfoResponse.swift */; };
+		671BEF4B26B3DF56004AE3B1 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4A26B3DF56004AE3B1 /* Global.swift */; };
+		671BEF4D26B3F175004AE3B1 /* UserLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BEF4C26B3F175004AE3B1 /* UserLocationRequest.swift */; };
 		F906778226AE288F00BD8E3E /* MapTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */; };
 		F906778426AE28C300BD8E3E /* TableTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */; };
 		F906778626AE2C5500BD8E3E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906778526AE2C5500BD8E3E /* Colors.xcassets */; };
@@ -41,6 +43,8 @@
 		671BEF4326AFC3E9004AE3B1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginResponse.swift; path = OnTheMap/Controller/LoginResponse.swift; sourceTree = SOURCE_ROOT; };
 		671BEF4526AFCE07004AE3B1 /* GetStudentInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetStudentInfoResponse.swift; path = OnTheMap/Controller/GetStudentInfoResponse.swift; sourceTree = SOURCE_ROOT; };
 		671BEF4726B1219D004AE3B1 /* PostStudentInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostStudentInfoResponse.swift; path = OnTheMap/Controller/PostStudentInfoResponse.swift; sourceTree = SOURCE_ROOT; };
+		671BEF4A26B3DF56004AE3B1 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		671BEF4C26B3F175004AE3B1 /* UserLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserLocationRequest.swift; path = OnTheMap/Util/UserLocationRequest.swift; sourceTree = SOURCE_ROOT; };
 		F906778126AE288F00BD8E3E /* MapTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778326AE28C300BD8E3E /* TableTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewController.swift; sourceTree = "<group>"; };
 		F906778526AE2C5500BD8E3E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -85,16 +89,17 @@
 				F906777C26AE1FE200BD8E3E /* Assets */,
 				F906777B26AE1FA900BD8E3E /* Networking */,
 				F906777A26AE1F8800BD8E3E /* Model */,
-				F906777926AE1F7E00BD8E3E /* View */,
+				671BEF4926B3DF25004AE3B1 /* Util */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
 		};
-		F906777926AE1F7E00BD8E3E /* View */ = {
+		671BEF4926B3DF25004AE3B1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				671BEF4A26B3DF56004AE3B1 /* Global.swift */,
 			);
-			path = View;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		F906777A26AE1F8800BD8E3E /* Model */ = {
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				671BEF4126AFC336004AE3B1 /* LoginRequest.swift */,
+				671BEF4C26B3F175004AE3B1 /* UserLocationRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -237,12 +243,14 @@
 			files = (
 				671BEF2E26A4E288004AE3B1 /* LoginViewController.swift in Sources */,
 				671BEF3E26AE691C004AE3B1 /* TableTabbedViewCell.swift in Sources */,
+				671BEF4D26B3F175004AE3B1 /* UserLocationRequest.swift in Sources */,
 				F906778426AE28C300BD8E3E /* TableTabbedViewController.swift in Sources */,
 				671BEF4226AFC336004AE3B1 /* LoginRequest.swift in Sources */,
 				671BEF2A26A4E288004AE3B1 /* AppDelegate.swift in Sources */,
 				F906778A26AE38C500BD8E3E /* AddLocationViewController.swift in Sources */,
 				F906778826AE386E00BD8E3E /* InfoPostingViewController.swift in Sources */,
 				671BEF4826B1219D004AE3B1 /* PostStudentInfoResponse.swift in Sources */,
+				671BEF4B26B3DF56004AE3B1 /* Global.swift in Sources */,
 				671BEF2C26A4E288004AE3B1 /* SceneDelegate.swift in Sources */,
 				F906778226AE288F00BD8E3E /* MapTabbedViewController.swift in Sources */,
 				671BEF4426AFC3E9004AE3B1 /* LoginResponse.swift in Sources */,

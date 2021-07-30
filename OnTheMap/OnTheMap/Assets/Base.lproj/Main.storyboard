@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="GsN-i6-VuP">
-                                <rect key="frame" x="20" y="323" width="374" height="235.5"/>
+                                <rect key="frame" x="20" y="323" width="374" height="248"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r76-ZN-ZcX">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
@@ -51,24 +51,37 @@
                                             <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFg-xD-FZi"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?  Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouw-sN-4Eo">
-                                        <rect key="frame" x="0.0" y="215" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mMR-U7-aAD">
+                                        <rect key="frame" x="0.0" y="215" width="374" height="33"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouw-sN-4Eo">
+                                                <rect key="frame" x="0.0" y="6.5" width="183" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQ8-PL-CRs">
+                                                <rect key="frame" x="191" y="0.0" width="183" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Sign up"/>
+                                                <connections>
+                                                    <action selector="signup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="khH-2G-ORZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ouw-sN-4Eo" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="Hvz-PR-wHO"/>
                                     <constraint firstItem="r76-ZN-ZcX" firstAttribute="top" secondItem="GsN-i6-VuP" secondAttribute="top" id="Mic-oR-AfW"/>
+                                    <constraint firstAttribute="trailing" secondItem="mMR-U7-aAD" secondAttribute="trailing" id="OL6-Jo-EuH"/>
                                     <constraint firstItem="oE5-Sf-16c" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="Siv-uu-qtL"/>
                                     <constraint firstItem="oE5-Sf-16c" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="Sok-Gd-oIt"/>
                                     <constraint firstAttribute="trailing" secondItem="oE5-Sf-16c" secondAttribute="trailing" id="Vas-t6-qXe"/>
                                     <constraint firstItem="r76-ZN-ZcX" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="fcH-yL-uvQ"/>
                                     <constraint firstAttribute="trailing" secondItem="r76-ZN-ZcX" secondAttribute="trailing" id="gkU-Rj-rH1"/>
                                     <constraint firstAttribute="trailing" secondItem="inM-mp-pdr" secondAttribute="trailing" id="hbF-dj-839"/>
-                                    <constraint firstAttribute="trailing" secondItem="ouw-sN-4Eo" secondAttribute="trailing" id="iMK-M7-Ssu"/>
                                     <constraint firstItem="inM-mp-pdr" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="lF3-Lq-2Ba"/>
+                                    <constraint firstItem="mMR-U7-aAD" firstAttribute="leading" secondItem="GsN-i6-VuP" secondAttribute="leading" id="nQh-vj-gx2"/>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="aVy-rf-ExL">
@@ -89,6 +102,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="password" destination="oE5-Sf-16c" id="bM6-s9-ew4"/>
+                        <outlet property="userName" destination="r76-ZN-ZcX" id="86I-lV-Xmx"/>
                         <segue destination="qIW-Am-vf4" kind="presentation" identifier="showDashboard" modalPresentationStyle="fullScreen" id="2Wp-vg-dOE"/>
                     </connections>
                 </viewController>
@@ -328,7 +343,11 @@
                                     <action selector="addLocation:" destination="ibv-0i-LEm" id="AbU-xC-Vov"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="icon_refresh" id="0RV-Vr-QvX"/>
+                            <barButtonItem title="Item" image="icon_refresh" id="0RV-Vr-QvX">
+                                <connections>
+                                    <action selector="refresh:" destination="ibv-0i-LEm" id="cqR-De-Rfn"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
