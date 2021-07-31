@@ -10,23 +10,26 @@ import UIKit
 
 class InfoPostingViewController: UIViewController {
   
+    @IBOutlet weak var city: UITextField!
+    
+    @IBOutlet weak var mediaURL: UITextField!
+
+    @IBAction func addLocation(_ sender: Any) {
+        performSegue(withIdentifier: "getLocation", sender: city)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "getLocation" {
+            let vc = segue.destination as! AddLocationViewController
+            
+            vc.city = sender as! String
+        }
     }
-    */
-
+    
 }

@@ -227,6 +227,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addLocation:" destination="eJF-mF-kjt" eventType="touchUpInside" id="6Op-jU-HDy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -252,6 +255,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="exN-js-t60"/>
+                    <connections>
+                        <outlet property="city" destination="XLZ-4x-0vU" id="bYb-BL-RIf"/>
+                        <outlet property="mediaURL" destination="cfE-bw-h9i" id="YWy-EN-6vr"/>
+                        <segue destination="Dd7-8c-UEV" kind="presentation" identifier="getLocation" modalPresentationStyle="fullScreen" id="Zrq-7o-fzU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnA-dV-hRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

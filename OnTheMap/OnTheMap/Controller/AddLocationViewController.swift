@@ -10,6 +10,8 @@ import MapKit
 
 class AddLocationViewController: UIViewController {
 
+    var city: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
