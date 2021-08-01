@@ -30,8 +30,7 @@ class TableTabbedViewController: UIViewController {
     
     @IBAction func refresh(_ sender: Any) {
         UdacityClient.getStudentsInfo { data, error in
-            Global.studentsInfo = data
-            
+            Global.studentsInfo = data.sorted{ $0.updateDate > $1.updateDate}
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

@@ -19,6 +19,7 @@ class UdacityClient {
         case getSessionID
         case getUserLocations
         case postUserLocation
+        case changeUserLocation(String)
         case userLocationById(String)
         case webAuth
         
@@ -28,8 +29,10 @@ class UdacityClient {
                 return Endpoints.base + "/StudentLocation?limit=100"
             case .postUserLocation:
                 return Endpoints.base + "/StudentLocation"
+            case .changeUserLocation(let userId):
+                return Endpoints.base + "/StudentLocation/\(userId)"
             case .userLocationById(let userId):
-                return Endpoints.base + "/StudentLocation?uniqueKey=\(userId)"
+                return Endpoints.base + "/users/\(userId)"
             case .getSessionID:
                 return Endpoints.base +  "/session"
             case .webAuth:
@@ -102,14 +105,12 @@ class UdacityClient {
                 completion(false, error)
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+
             let decoder = JSONDecoder()
             let range = (5..<data.count)
             let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
             do {
                 _ = try decoder.decode(LoginResponse.self, from: newData)
-                
                 completion(true, nil)
             } catch {
                 completion(false, error)
@@ -141,6 +142,26 @@ class UdacityClient {
         }
         
         task.resume()
+    }
+    
+    class func postStudentInfo(completion: @escaping (Bool, Error?) -> Void) {
+        let studentInfo = UserLocationRequest(mapString: "Los Angeles", mediaURL: "https://www.google.com", latitude: 37.386052, longitude: -122.083851)
+        var request = URLRequest(url: Endpoints.postUserLocation.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONEncoder().encode(studentInfo)
+        } catch {
+            print(error)
+        }
         
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+          if error != nil { // Handle error…
+              return
+          }
+          print(String(data: data!, encoding: .utf8)!)
+        }
+        task.resume()
     }
 }

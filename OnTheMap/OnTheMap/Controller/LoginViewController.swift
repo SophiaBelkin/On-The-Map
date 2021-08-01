@@ -11,14 +11,13 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var signupText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateTextView()
     }
     
-    
-
     @IBAction func login(_ sender: Any) {
         let username = userName.text
         let password = password.text
@@ -37,10 +36,15 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func signup(_ sender: Any) {
+    func  updateTextView() {
         let signupUrl = "https://auth.udacity.com/sign-up"
-        UIApplication.shared.open(URL(string: signupUrl)!)
+        guard let text = signupText.text else { return }
+        let attributedString = NSAttributedString.makeHyperlink(for: signupUrl, in: text, as: "Sign up")
+        let font = signupText.font
+        let textAlignment = signupText.textAlignment
+        signupText.attributedText = attributedString
+        signupText.font = font
+        signupText.textAlignment = textAlignment
     }
     
 }
