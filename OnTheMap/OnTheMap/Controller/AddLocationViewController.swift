@@ -26,6 +26,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         setUserInputLocation()
         displayIndicator(activityIndicator, display: false)
+        isLoading(isLoading: true)
     }
     
     private func setUserInputLocation() {
@@ -58,11 +59,12 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                 let pin = MKPointAnnotation()
                 pin.coordinate = center
                 self.mapView.addAnnotation(pin)
+                self.isLoading(isLoading: false)
            }
     }
     
     @IBAction func submitLocation(_ sender: Any) {
-        isSavingLocation(isSaving: true)
+        isLoading(isLoading: true)
         UdacityClient.postStudentInfo(mapString: region, mediaURL: mediaURL, latitude: latitude, longitude: longitude) { response, error in
             DispatchQueue.main.async {
                 if response{
@@ -70,14 +72,14 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                 } else {
                     self.showFailedMessage(title: "Failed to save your location", message: error?.localizedDescription ?? "")
                 }
-                self.isSavingLocation(isSaving: false)
+                self.isLoading(isLoading: false)
             }
         }
     }
     
-    func isSavingLocation(isSaving: Bool) {
-        saveLocation.alpha = isSaving ? 0.5 : 1
-        saveLocation.isEnabled = !isSaving
-        displayIndicator(activityIndicator, display: isSaving)
+    func isLoading(isLoading: Bool) {
+        saveLocation.alpha = isLoading ? 0.5 : 1
+        saveLocation.isEnabled = !isLoading
+        displayIndicator(activityIndicator, display: isLoading)
     }
 }
