@@ -12,6 +12,8 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
 
     var region: String = ""
     var mediaURL: String = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -43,8 +45,10 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                   return
                 }
 
-                let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                self.latitude = location.coordinate.latitude
+                self.longitude = location.coordinate.longitude
+                let center = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
                 self.mapView.setRegion(region, animated: true)
             
                 let pin = MKPointAnnotation()
@@ -54,8 +58,12 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func submitLocation(_ sender: Any) {
-        UdacityClient.postStudentInfo() {_,_ in
-            self.navigationController?.popToRootViewController(animated: true)
+        UdacityClient.postStudentInfo(mapString: region, mediaURL: mediaURL, latitude: latitude, longitude: longitude) { response, error in
+            if response{
+                self.navigationController?.popToRootViewController(animated: true)
+            } else {
+                self.showFailedMessage(title: "Failed to save your location", message: error?.localizedDescription ?? "")
+            }
         }
     }
     

@@ -12,22 +12,25 @@ class MapTabbedViewController: UIViewController {
 
 
     @IBOutlet weak var mapView: MKMapView!
-    
+    var studentsInfo:[StudentInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         
+        getStudentsInfo()
+    }
+    
+    func getStudentsInfo() {
         UdacityClient.getStudentsInfo { data, error in
-            Global.studentsInfo = data
-            let annotations = self.getAnnotations(studentsInfo: Global.studentsInfo)
+            self.studentsInfo = data
+            let annotations = self.getAnnotations(studentsInfo:  self.studentsInfo)
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(annotations)
             }
         }
     }
-    
     
     private func getAnnotations(studentsInfo: [StudentInfo]) -> [MKPointAnnotation] {
         var annotations = [MKPointAnnotation]()
@@ -69,15 +72,6 @@ class MapTabbedViewController: UIViewController {
         }
     }
         
-    @IBAction func logout(_ sender: Any) {
-        UdacityClient.logout() { _,_  in
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
-       
-        }
-    }
-    
     @IBAction func addLocation(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "InfoPostingViewController") as! InfoPostingViewController
         

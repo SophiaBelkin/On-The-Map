@@ -21,6 +21,12 @@ class LoginViewController: UIViewController {
         updateTextView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userName.text = ""
+        password.text = ""
+    }
+    
     @IBAction func login(_ sender: Any) {
         setLoggingIn(true)
         let username = userName.text
@@ -29,7 +35,7 @@ class LoginViewController: UIViewController {
         if username != nil && password != nil {
             UdacityClient.login(username: username!, password: password!, completion: handleLoginResponse(success:error:))
         } else {
-            showLoginFailure(message: "Please enter your Udacity username and password")
+            showFailedMessage(title: "Login Failed", message: "Please enter your Udacity username and password")
         }
     }
     
@@ -39,20 +45,13 @@ class LoginViewController: UIViewController {
             if success {
                 self.performSegue(withIdentifier: "showDashboard", sender: nil)
             } else {
-                self.showLoginFailure(message: error?.localizedDescription ?? "")
+                self.showFailedMessage(title: "Login Failed", message: error?.localizedDescription ?? "")
             }
         }
     }
-    
-    private func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        show(alertVC, sender: nil)
-    }
     
     private func setLoggingIn(_ loggingIn: Bool) {
-   
         if loggingIn {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
@@ -64,7 +63,6 @@ class LoginViewController: UIViewController {
         password.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
         signupText.isSelectable = !loggingIn
-   
     }
     
     private func updateTextView() {
