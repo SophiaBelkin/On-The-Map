@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.isHidden = true
+        userName.delegate = self
+        password.delegate = self
         updateTextView()
     }
     
@@ -25,6 +27,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         userName.text = ""
         password.text = ""
+        changeButtonState(button: loginButton, enable: false)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -76,5 +79,26 @@ class LoginViewController: UIViewController {
         signupText.textAlignment = textAlignment
     }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+           let updatedText = text.replacingCharacters(in: textRange, with: string)
+            var enable: Bool = false
+            if textField == userName {
+                let passwordText = password.text ?? ""
+                enable = !updatedText.isEmpty && !passwordText.isEmpty
+            } else if textField == password {
+                let userNameText = userName.text ?? ""
+                enable = !updatedText.isEmpty && !userNameText.isEmpty
+            }
+            changeButtonState(button: loginButton, enable: enable)
+        }
+        
+        return true
+    }
 }
 

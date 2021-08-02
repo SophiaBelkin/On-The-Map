@@ -21,4 +21,13 @@ extension UIViewController {
         }
     }
      
+    func changeButtonState(button: UIButton, enable: Bool) {
+        if enable {
+            button.isEnabled = true
+            button.alpha = 1
+        } else {
+            button.isEnabled = false
+            button.alpha = 0.5
+        }
+    }
 }

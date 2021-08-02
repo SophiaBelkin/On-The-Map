@@ -10,7 +10,7 @@ import Foundation
 
 struct UserLocationRequest: Codable {
     var objectId: String = ""
-    var uniqueKey: UUID
+    var uniqueKey: UUID = UUID()
     var firstName: String
     var lastName: String
     let mapString: String
