@@ -12,7 +12,8 @@ class InfoPostingViewController: UIViewController {
   
     @IBOutlet weak var region: UITextField!
     @IBOutlet weak var mediaURL: UITextField!
-
+    @IBOutlet weak var findLocation: UIButton!
+    
     @IBAction func addLocation(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "addLocationView") as! AddLocationViewController
         vc.region = region.text ?? "CA"
@@ -22,7 +23,26 @@ class InfoPostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        changeButtonState(button: findLocation, enable: false)
+        region.delegate = self
     }
     
+}
+
+extension InfoPostingViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+       if let text = textField.text,
+          let textRange = Range(range, in: text) {
+          let updatedText = text.replacingCharacters(in: textRange, with: string)
+           var enable: Bool = false
+           if textField == region {
+                enable = !updatedText.isEmpty
+                changeButtonState(button: findLocation, enable: enable)
+           }
+          
+       }
+        return true
+    }
 }

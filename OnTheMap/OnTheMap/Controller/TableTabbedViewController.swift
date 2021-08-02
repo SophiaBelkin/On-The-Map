@@ -66,7 +66,7 @@ extension TableTabbedViewController: UITableViewDelegate, UITableViewDataSource 
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let student = Global.studentsInfo[indexPath.row]
+        let student = studentsInfo[indexPath.row]
         let url = URL(string: student.mediaURL)!
     
         UIApplication.shared.open(url)

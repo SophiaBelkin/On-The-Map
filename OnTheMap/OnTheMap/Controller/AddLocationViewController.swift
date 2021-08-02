@@ -16,7 +16,8 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     var longitude: Double = 0.0
     
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var saveLocation: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         setUserInputLocation()
+        displayIndicator(activityIndicator, display: false)
     }
     
     private func setUserInputLocation() {
@@ -31,17 +33,19 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
               geocoder.geocodeAddressString(region) { placemarks, error in
                   
                 guard error == nil else {
-                  print("*** Error in \(#function): \(error!.localizedDescription)")
-                  return
+                    self.showFailedMessage(title: "Error", message: "Cannot find the city")
+                    return
                 }
 
                 guard let placemark = placemarks?[0] else {
-                  print("*** Error in \(#function): placemark is nil")
-                  return
+                    print("*** Error in \(#function): placemark is nil")
+                    self.showFailedMessage(title: "Error", message: "Cannot find the city")
+                    return
                 }
 
                 guard let location = placemark.location else {
-                  print("*** Error in \(#function): placemark is nil")
+                    print("*** Error in \(#function): placemark is nil")
+                    self.showFailedMessage(title: "Error", message: "Cannot find the city")
                   return
                 }
 
@@ -58,13 +62,22 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func submitLocation(_ sender: Any) {
+        isSavingLocation(isSaving: true)
         UdacityClient.postStudentInfo(mapString: region, mediaURL: mediaURL, latitude: latitude, longitude: longitude) { response, error in
-            if response{
-                self.navigationController?.popToRootViewController(animated: true)
-            } else {
-                self.showFailedMessage(title: "Failed to save your location", message: error?.localizedDescription ?? "")
+            DispatchQueue.main.async {
+                if response{
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    self.showFailedMessage(title: "Failed to save your location", message: error?.localizedDescription ?? "")
+                }
+                self.isSavingLocation(isSaving: false)
             }
         }
     }
     
+    func isSavingLocation(isSaving: Bool) {
+        saveLocation.alpha = isSaving ? 0.5 : 1
+        saveLocation.isEnabled = !isSaving
+        displayIndicator(activityIndicator, display: isSaving)
+    }
 }

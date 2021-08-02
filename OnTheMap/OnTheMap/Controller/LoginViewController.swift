@@ -17,9 +17,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.isHidden = true
         userName.delegate = self
         password.delegate = self
+        displayIndicator(activityIndicator, display: false)
         updateTextView()
     }
     
@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         userName.text = ""
         password.text = ""
+        
         changeButtonState(button: loginButton, enable: false)
     }
     
@@ -56,11 +57,9 @@ class LoginViewController: UIViewController {
     
     private func setLoggingIn(_ loggingIn: Bool) {
         if loggingIn {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
+            displayIndicator(activityIndicator, display: true)
         } else {
-            activityIndicator.isHidden = true
-            activityIndicator.stopAnimating()
+            displayIndicator(activityIndicator, display: false)
         }
         userName.isEnabled = !loggingIn
         password.isEnabled = !loggingIn

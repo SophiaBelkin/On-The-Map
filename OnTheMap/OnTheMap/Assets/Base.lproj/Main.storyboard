@@ -257,6 +257,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="exN-js-t60"/>
                     <connections>
+                        <outlet property="findLocation" destination="3XY-2w-lCp" id="uOD-p0-NxP"/>
                         <outlet property="mediaURL" destination="cfE-bw-h9i" id="YWy-EN-6vr"/>
                         <outlet property="region" destination="XLZ-4x-0vU" id="rBZ-Yj-d88"/>
                     </connections>
@@ -391,21 +392,32 @@
                                     <action selector="submitLocation:" destination="Dd7-8c-UEV" eventType="touchUpInside" id="utl-Al-IB5"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZqW-cI-3TF">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8TT-XN-GcR"/>
+                                    <constraint firstAttribute="height" constant="50" id="t2F-KC-Ceu"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qaq-XC-1B0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZqW-cI-3TF" firstAttribute="centerX" secondItem="dMY-W4-Xhk" secondAttribute="centerX" id="08x-wF-Zkz"/>
                             <constraint firstItem="qaq-XC-1B0" firstAttribute="trailing" secondItem="0Lj-YQ-Kbu" secondAttribute="trailing" id="5dE-wk-6dB"/>
                             <constraint firstItem="eKc-0W-mYu" firstAttribute="leading" secondItem="qaq-XC-1B0" secondAttribute="leading" constant="20" id="GIZ-7F-eoz"/>
                             <constraint firstItem="qaq-XC-1B0" firstAttribute="trailing" secondItem="eKc-0W-mYu" secondAttribute="trailing" constant="20" id="S9E-oq-fMb"/>
                             <constraint firstItem="qaq-XC-1B0" firstAttribute="bottom" secondItem="0Lj-YQ-Kbu" secondAttribute="bottom" id="dj7-2i-OUR"/>
                             <constraint firstItem="qaq-XC-1B0" firstAttribute="bottom" secondItem="eKc-0W-mYu" secondAttribute="bottom" constant="50" id="mZM-lG-QTW"/>
+                            <constraint firstItem="ZqW-cI-3TF" firstAttribute="centerY" secondItem="dMY-W4-Xhk" secondAttribute="centerY" id="rjk-9e-vKI"/>
                             <constraint firstItem="0Lj-YQ-Kbu" firstAttribute="leading" secondItem="qaq-XC-1B0" secondAttribute="leading" id="wus-DA-6p8"/>
                             <constraint firstItem="0Lj-YQ-Kbu" firstAttribute="top" secondItem="qaq-XC-1B0" secondAttribute="top" id="xvO-92-ezd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZqW-cI-3TF" id="faN-mC-Ll6"/>
                         <outlet property="mapView" destination="0Lj-YQ-Kbu" id="9zY-Mb-LvE"/>
+                        <outlet property="saveLocation" destination="eKc-0W-mYu" id="dkv-rB-ftc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMb-wD-7Xj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

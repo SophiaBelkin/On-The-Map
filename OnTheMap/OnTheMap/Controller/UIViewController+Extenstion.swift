@@ -12,7 +12,7 @@ extension UIViewController {
         let alertVC = UIAlertController(title:title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true)
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -28,6 +28,16 @@ extension UIViewController {
         } else {
             button.isEnabled = false
             button.alpha = 0.5
+        }
+    }
+    
+    func displayIndicator(_ indicator: UIActivityIndicatorView, display: Bool) {
+        if display {
+            indicator.isHidden = false
+            indicator.startAnimating()
+        } else {
+            indicator.isHidden = true
+            indicator.stopAnimating()
         }
     }
 }

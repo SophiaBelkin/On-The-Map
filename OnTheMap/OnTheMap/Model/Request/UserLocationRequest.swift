@@ -9,8 +9,7 @@ import Foundation
 
 
 struct UserLocationRequest: Codable {
-    var objectId: String = ""
-    var uniqueKey: UUID = UUID()
+    var uniqueKey: String
     var firstName: String
     var lastName: String
     let mapString: String

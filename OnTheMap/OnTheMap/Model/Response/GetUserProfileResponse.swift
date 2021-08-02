@@ -12,8 +12,8 @@ struct GetUserProfileResponse: Codable {
 }
 
 struct UserProfile: Codable {
-    let firstName: String = "John"
-    let lastName: String = "D"
+    let firstName: String
+    let lastName: String
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"

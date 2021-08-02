@@ -128,18 +128,19 @@ class UdacityClient {
     }
     
     class func postStudentInfo(mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        let studentInfo = UserLocationRequest(firstName: Auth.firstName, lastName: Auth.lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
+        let studentInfo = UserLocationRequest(uniqueKey: UUID().uuidString, firstName: Auth.firstName, lastName: Auth.lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
         var requestBody = ""
         do {
             let data = try JSONEncoder().encode(studentInfo)
             requestBody = String(data: data, encoding: .utf8)!
+            print("\(#function) \(requestBody)")
         } catch {
             print(error)
         }
         
-        HTTPRequests.taskForPOSTRequest(url: Endpoints.postUserLocation.url, body: requestBody, response: Bool.self) { response, error in
-            
-            if response != nil {
+        HTTPRequests.taskForPOSTRequest(url: Endpoints.postUserLocation.url, body: requestBody, response: PostStudentInfoResponse.self) { response, error in
+            if let response =  response {
+                Auth.objectId = response.objectId
                 completion(true, error)
             } else {
                 completion(false, error)
