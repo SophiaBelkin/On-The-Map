@@ -24,6 +24,11 @@ class TableTabbedViewController: UIViewController {
     
     func getStudentsInfo() {
         UdacityClient.getStudentsInfo { data, error in
+            if error != nil {
+                self.showFailedMessage(title: "Error", message: "Fetching students information failed")
+                return
+            }
+            
             self.studentsInfo = data
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -57,7 +62,7 @@ extension TableTabbedViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableTabbedViewCell
         let student = studentsInfo[indexPath.row]
         
-        cell.studentName.text = "\(student.firstName) \(student.lastName))"
+        cell.studentName.text = "\(student.firstName) \(student.lastName)"
         cell.studentURL.text = student.mediaURL
        
         return cell

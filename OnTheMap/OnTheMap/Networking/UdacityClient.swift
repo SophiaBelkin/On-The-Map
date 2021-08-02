@@ -30,7 +30,7 @@ class UdacityClient {
         var stringValue: String {
             switch self {
             case .getUserLocations:
-                return Endpoints.base + "/StudentLocation?limit=100"
+                return Endpoints.base + "/StudentLocation?limit=100&order=-updatedAt"
             case .postUserLocation:
                 return Endpoints.base + "/StudentLocation"
             case .changeUserLocation:
@@ -119,8 +119,7 @@ class UdacityClient {
     class func getStudentsInfo(completion: @escaping ([StudentInfo], Error?) -> Void) {
         HTTPRequests.taskForGETRequest(url: Endpoints.getUserLocations.url, response: GetStudentInfoResponse.self) { response, error in
             if let response = response {
-                let studentInfo = response.results.sorted{ $0.updateDate > $1.updateDate}
-                completion(studentInfo, nil)
+                completion(response.results, nil)
             } else {
                 completion([], error)
             }

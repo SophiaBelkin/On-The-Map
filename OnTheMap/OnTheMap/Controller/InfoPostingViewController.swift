@@ -25,6 +25,7 @@ class InfoPostingViewController: UIViewController {
         super.viewDidLoad()
         changeButtonState(button: findLocation, enable: false)
         region.delegate = self
+        mediaURL.delegate = self
     }
     
 }
@@ -43,6 +44,11 @@ extension InfoPostingViewController: UITextFieldDelegate {
            }
           
        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

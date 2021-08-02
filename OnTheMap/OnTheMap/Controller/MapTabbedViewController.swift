@@ -24,6 +24,11 @@ class MapTabbedViewController: UIViewController {
     
     func getStudentsInfo() {
         UdacityClient.getStudentsInfo { data, error in
+            if error != nil {
+                self.showFailedMessage(title: "Error", message: "Fetching students information failed")
+                return
+            }
+            
             self.studentsInfo = data
             let annotations = self.getAnnotations(studentsInfo:  self.studentsInfo)
             DispatchQueue.main.async {
